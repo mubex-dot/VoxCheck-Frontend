@@ -29,7 +29,7 @@ const CreateAccountForm = () => {
       const res = await registerMutation({
         email: data.email,
         password: data.password,
-        full_name: data.full_name || null, // Pass undefined/null if empty
+        full_name: data.full_name || null,
       }).unwrap();
 
       if (!res.data) {

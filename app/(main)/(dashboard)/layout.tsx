@@ -1,27 +1,18 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sidebar } from "./_components/Sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "VoxCheck",
-  description: "Civic verification console",
-};
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} flex min-h-full flex-col`}
-    >
-      {children}
+    <div className="flex min-h-screen bg-paper text-ink">
+      <Sidebar />
+      <main className="flex-1 ml-65 flex flex-col min-h-screen">
+        <div className="flex-1 p-8 pb-4 max-w-350 w-full mx-auto">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }
