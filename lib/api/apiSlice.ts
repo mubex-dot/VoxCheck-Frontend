@@ -26,28 +26,28 @@ export const voxcheckApiSlice = createApi({
   endpoints: (builder) => ({
     login: builder.mutation<APIResponse<Token>, UserLogin>({
       query: (credentials) => ({
-        url: "/v1/auth/login",
+        url: "/auth/login",
         method: "POST",
         body: credentials,
       }),
     }),
     register: builder.mutation<APIResponse<UserResponse>, UserCreate>({
       query: (data) => ({
-        url: "/v1/auth/signup",
+        url: "/auth/signup",
         method: "POST",
         body: data,
       }),
     }),
     refresh: builder.mutation<APIResponse<Token>, { refresh_token: string }>({
       query: (data) => ({
-        url: "/v1/auth/refresh",
+        url: "/auth/refresh",
         method: "POST",
         body: data,
       }),
     }),
     logout: builder.mutation<void, { refresh_token: string }>({
       query: (data) => ({
-        url: "/v1/auth/logout",
+        url: "/auth/logout",
         method: "POST",
         body: data,
       }),

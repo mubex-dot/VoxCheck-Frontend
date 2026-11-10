@@ -9,7 +9,7 @@ export const claimsApiSlice = voxcheckApiSlice.injectEndpoints({
       { page?: number; page_size?: number; status?: string }
     >({
       query: (params) => ({
-        url: "/v1/claims",
+        url: "/claims",
         params,
       }),
       providesTags: (result) =>
@@ -24,7 +24,7 @@ export const claimsApiSlice = voxcheckApiSlice.injectEndpoints({
           : [{ type: "Claim", id: "LIST" }],
     }),
     getClaim: builder.query<APIResponse<ClaimRead>, string>({
-      query: (id) => `/v1/claims/${id}`,
+      query: (id) => `/claims/${id}`,
       providesTags: (_result, _error, id) => [{ type: "Claim", id }],
     }),
     reviewClaim: builder.mutation<
@@ -32,7 +32,7 @@ export const claimsApiSlice = voxcheckApiSlice.injectEndpoints({
       { id: string; data: ClaimReview }
     >({
       query: ({ id, data }) => ({
-        url: `/v1/claims/${id}`,
+        url: `/claims/${id}`,
         method: "PUT",
         body: data,
       }),

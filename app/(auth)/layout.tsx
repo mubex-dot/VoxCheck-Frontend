@@ -1,4 +1,4 @@
-import { Providers } from "../providers";
+import AuthRedirect from "./AuthRedirect";
 
 export const instant = false;
 
@@ -9,7 +9,7 @@ export default function AuthLayout({
 }) {
   return (
     <div className="min-h-screen bg-paper flex flex-col items-center justify-center p-4">
-      <Providers>{children}</Providers>
+      <AuthRedirect>{children}</AuthRedirect>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-serif" });
@@ -25,7 +26,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${fraunces.variable} ${ibmPlexMono.variable}`}
     >
-      <body className="bg-paper text-ink antialiased">{children}</body>
+      <body className="bg-paper text-ink antialiased">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

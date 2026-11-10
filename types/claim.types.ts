@@ -1,11 +1,30 @@
+export interface VconDialog {
+  url: string;
+  duration?: string; // Added based on UI needs
+}
+
+export interface VconAnalysis {
+  type: string;
+  confidence: number;
+  body: string;
+}
+
+export interface VconData {
+  vcon: string;
+  uuid: string;
+  created_at: string;
+  parties: Array<{ hashed_whatsapp: string }>;
+  dialog: VconDialog[];
+  analysis: VconAnalysis[];
+}
+
 export interface ClaimRead {
   id: string;
-  status: string;
+  status: "True" | "False" | "Unverified" | "Needs Human Review" | "Pending";
   message_type: string;
   created_at: string;
   updated_at: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  vcon: Record<string, any>;
+  vcon: VconData;
 }
 
 export interface ClaimPage {
@@ -13,16 +32,4 @@ export interface ClaimPage {
   total: number;
   page: number;
   page_size: number;
-}
-
-export type ClaimStatus =
-  | "True"
-  | "False"
-  | "Unverified"
-  | "Needs Human Review";
-
-export interface ClaimReview {
-  status: ClaimStatus;
-  summary: string;
-  sources?: string[];
 }
