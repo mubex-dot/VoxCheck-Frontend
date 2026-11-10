@@ -33,3 +33,15 @@ export interface ClaimPage {
   page: number;
   page_size: number;
 }
+
+export interface ClaimReview {
+  status: ClaimStatus;
+  summary: string;
+  sources?: string[];
+}
+
+export type ClaimStatus =
+  | "True"
+  | "False"
+  | "Unverified"
+  | "Needs Human Review";
