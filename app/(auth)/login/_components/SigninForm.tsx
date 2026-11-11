@@ -38,7 +38,7 @@ const SignInForm = () => {
           refreshToken: res.data.refresh_token,
         }),
       );
-      router.push("/dashboard");
+      router.push("/");
     } catch (err) {
       console.error("Login failed", err);
     }

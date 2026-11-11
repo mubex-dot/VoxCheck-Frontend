@@ -1,9 +1,6 @@
-import { Check, X, AlertTriangle, Clock } from "lucide-react";
+import { Check, X, Clock } from "lucide-react";
 
 const StatusBadge = ({ status }: { status: string }) => {
-  // Map "Needs Human Review" to "Misleading" for UI display
-  const displayStatus = status === "Needs Human Review" ? "Misleading" : status;
-
   const styles: Record<
     string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,12 +18,6 @@ const StatusBadge = ({ status }: { status: string }) => {
       border: "border-alert/20",
       icon: X,
     },
-    Misleading: {
-      bg: "bg-alert-soft",
-      text: "text-alert",
-      border: "border-alert/20",
-      icon: AlertTriangle,
-    },
     Unverified: {
       bg: "bg-surface-sunken",
       text: "text-ink-muted",
@@ -41,7 +32,7 @@ const StatusBadge = ({ status }: { status: string }) => {
     },
   };
 
-  const style = styles[displayStatus] || styles.Unverified;
+  const style = styles[status] || styles.Pending;
   const Icon = style.icon;
 
   return (
@@ -49,7 +40,7 @@ const StatusBadge = ({ status }: { status: string }) => {
       className={`inline-flex items-center gap-1.5 rounded-badge border ${style.border} ${style.bg} px-2.5 py-1 text-caption font-medium ${style.text}`}
     >
       <Icon className="w-3.5 h-3.5" strokeWidth={2.5} />
-      {displayStatus}
+      {status}
     </div>
   );
 };
